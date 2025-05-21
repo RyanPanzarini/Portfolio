@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio | Engenheiro de Software</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #111827;
+            color: #e5e7eb;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .skill-bar {
+            transition: width 1.5s ease;
+        }
+        
+        .section {
+            scroll-margin-top: 80px;
+        }
+
+        /* Dark mode adjustments */
+        .bg-white {
+            background-color: #1f2937 !important;
+        }
+
+        .bg-gray-50 {
+            background-color: #111827 !important;
+        }
+
+        .text-gray-800 {
+            color: #e5e7eb !important;
+        }
+
+        .text-gray-600 {
+            color: #9ca3af !important;
+        }
+
+        .bg-gray-100 {
+            background-color: #374151 !important;
+        }
+
+        .border-gray-300 {
+            border-color: #4b5563 !important;
+        }
+
+        .bg-gray-200 {
+            background-color: #4b5563 !important;
+        }
+
+        .bg-blue-100 {
+            background-color: #1e40af !important;
+        }
+
+        .text-blue-800 {
+            color: #93c5fd !important;
+        }
+
+        .bg-purple-100 {
+            background-color: #5b21b6 !important;
+        }
+
+        .bg-green-100 {
+            background-color: #065f46 !important;
+        }
+
+        .bg-gray-800 {
+            background-color: #030712 !important;
+        }
+
+        .border-gray-700 {
+            border-color: #374151 !important;
+        }
+
+        /* Button animations */
+        .btn-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-active {
+            transform: translateY(1px);
+        }
+
+        /* Social icons */
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        /* Form input focus */
+        .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-gray-800 shadow-md z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-blue-400"> Meu Portfólio</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-blue-400">Início</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-blue-400">Sobre</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-blue-400">Projetos</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-blue-400">Habilidades</a>
+                    <a href="#sql" class="nav-link text-gray-300 hover:text-blue-400">SQL</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-blue-400">Contato</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="menu-btn">
+                    <i class="fas fa-bars text-2xl text-gray-300"></i>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden mt-4" id="mobile-menu">
+                <div class="flex flex-col space-y-3">
+                    <a href="#home" class="text-gray-300 hover:text-blue-400">Início</a>
+                    <a href="#about" class="text-gray-300 hover:text-blue-400">Sobre</a>
+                    <a href="#projects" class="text-gray-300 hover:text-blue-400">Projetos</a>
+                    <a href="#skills" class="text-gray-300 hover:text-blue-400">Habilidades</a>
+                    <a href="#sql" class="text-gray-300 hover:text-blue-400">SQL</a>
+                    <a href="#contact" class="text-gray-300 hover:text-blue-400">Contato</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="section min-h-screen flex items-center pt-20 bg-gray-900">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-100 mb-4">Olá, eu sou <span class="text-blue-400">Ryan Panzarini</span></h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-gray-300 mb-6">Engenheiro de Software</h2>
+                    <p class="text-xl text-gray-400 mb-8">"Transformo problemas em soluções com software."</p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="btn-hover bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition duration-300 flex items-center">
+                            <i class="fas fa-paper-plane mr-2"></i> Contate-me
+                        </a>
+                        <a href="Arquivos/Currículo Ryan Panzarini Paes.pdf" download="Curriculo_Ryan_Panzarini.pdf" class="btn-hover bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition duration-300 flex items-center">
+                            <i class="fas fa-download mr-2"></i> Baixar CV
+                        </a>
+                    </div>
+                    <div class="flex space-x-3 mt-6">
+                        <a href="https://github.com/RyanPanzarini" target="_blank" class="social-icon bg-gray-700 hover:bg-gray-600 text-gray-300 p-3 rounded-full transition duration-300">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ryan-panzarini-137521265/" target="_blank" class="social-icon bg-gray-700 hover:bg-gray-600 text-gray-300 p-3 rounded-full transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="dev.panzarini@gmail.com" class="social-icon bg-gray-700 hover:bg-gray-600 text-gray-300 p-3 rounded-full transition duration-300">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+    <div class="w-96 h-96 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem] bg-blue-900 rounded-2xl overflow-hidden shadow-xl">
+        <!-- Imagem de perfil -->
+        <img src="Imagens/9b264608-cb19-4997-9ed1-f58ee43b8b47.jpeg" alt="Foto de perfil" class="w-full h-full object-cover object-center" />
+                                <i class="fas fa-user text-8xl"></i>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-5 -right-5 bg-gray-800 p-4 rounded-full shadow-lg">
+                            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl">
+                                <i class="fas fa-code"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-100 mb-16">Sobre Mim</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+                    <div class="w-64 h-64 rounded-full overflow-hidden shadow-xl border-4 border-blue-900">
+                        <!-- Placeholder for profile image -->
+                        <div class="w-full h-full bg-blue-900 flex items-center justify-center text-blue-400">
+                             <img src="Imagens/9b264608-cb19-4997-9ed1-f58ee43b8b47.jpeg" alt="Foto de perfil" class="w-full h-full object-cover object-center" />
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold text-gray-100 mb-4">Engenheiro de Software Profissional</h3>
+                    <p class="text-gray-400 mb-6">
+                        Sou Ryan Panzarini, engenheiro de software com experiência em desenvolvimento web, bancos de dados e SQL. Gosto de criar soluções eficientes, escaláveis e que fazem a diferença. Estou sempre aprendendo e buscando novos desafios para crescer profissionalmente.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h4 class="font-semibold text-gray-100 mb-2">Formação</h4>
+                            <ul class="text-gray-400 space-y-2">
+                                <li><i class="fas fa-graduation-cap text-blue-400 mr-2"></i> Engenharia de Software - Universidade Cesumar de Maringá</li>
+                                <li><i class="fas fa-certificate text-blue-400 mr-2"></i> Certificação em Oracle Avançado/li>
+                                <li><i class="fas fa-certificate text-blue-400 mr-2"></i> Curso Avançado em Python, HTML E CSS, JavaScript</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-100 mb-2">Experiência</h4>
+                            <ul class="text-gray-400 space-y-2">
+                                <li><i class="fas fa-briefcase text-blue-400 mr-2"></i> Analista de Dados Tasy na Prefeitura de Ponta Grossa</li>
+                                <li><i class="fas fa-briefcase text-blue-400 mr-2"></i> Marketing e Sistemas na Triunfo Automóveis</li>
+                                <li><i class="fas fa-briefcase text-blue-400 mr-2"></i> Auxiliar Administrativo na Protecta</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="#projects" class="btn-hover inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition duration-300">
+                        <i class="fas fa-laptop-code mr-2"></i> Ver Projetos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-100 mb-4">Projetos</h2>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
+                Alguns dos projetos que desenvolvi ao longo da minha carreira, demonstrando minha capacidade técnica e criatividade.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-md">
+                    <div class="h-48 bg-blue-900 flex items-center justify-center">
+                       <img src="Imagens/Acessibilidade-1-696x465.png" alt="Foto de perfil" class="w-full h-full object-cover object-center" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-100 mb-2">IncluiPG</h3>
+                        <p class="text-gray-400 mb-4">
+                            Sistema em desenvolvimento com a proposta de aumentar a inclusão e acessibilidade na cidade de Ponta Grossa
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-900 text-blue-300 text-xs px-3 py-1 rounded-full">C#</span>
+                            <span class="bg-blue-900 text-blue-300 text-xs px-3 py-1 rounded-full">SQL Server</span>
+                            <span class="bg-blue-900 text-blue-300 text-xs px-3 py-1 rounded-full">ASP.NET</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/RyanPanzarini/IncluiPG1" target="_blank" class="text-blue-400 hover:text-blue-300">
+                                <i class="fab fa-github"></i> Código
+                            </a>
+                            <a href="https://ryanpanzarini.github.io/IncluiPG1/" target="_blank" class="text-blue-400 hover:text-blue-300">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-md">
+                    <div class="h-48 bg-green-900 flex items-center justify-center">
+                        <img src="Imagens/recisou.png" Foto de perfil" class="w-full h-full object-cover object-center" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-100 mb-2">Precisou? Ligou!</h3>
+                        <p class="text-gray-400 mb-4">
+                            Projeto em desenvolvimento com a proposta de unir o trabalhador autonomo com o consumidor, facilitando a busca por serviços.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-900 text-green-300 text-xs px-3 py-1 rounded-full">Flutter</span>
+                            <span class="bg-green-900 text-green-300 text-xs px-3 py-1 rounded-full">Dart</span>
+                            <span class="bg-green-900 text-green-300 text-xs px-3 py-1 rounded-full">Firebase</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/RyanPanzarini/Meu-Site" target="_blank" class="text-green-400 hover:text-green-300">
+                                <i class="fab fa-github"></i> Código
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.example.app" target="_blank" class="text-green-400 hover:text-green-300">
+                                <i class="fas fa-external-link-alt"></i> Play Store
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-gray-800 rounded-xl overflow-hidden shadow-md">
+                    <div class="h-48 bg-purple-900 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-6xl text-purple-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-100 mb-2">Dashboard Analytics</h3>
+                        <p class="text-gray-400 mb-4">
+                            Em desenvolvimento
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-900 text-purple-300 text-xs px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-purple-900 text-purple-300 text-xs px-3 py-1 rounded-full">React</span>
+                            <span class="bg-purple-900 text-purple-300 text-xs px-3 py-1 rounded-full">D3.js</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="https://github.com/seu-usuario/dashboard-analytics" target="_blank" class="text-purple-400 hover:text-purple-300">
+                                <i class="fab fa-github"></i> Código
+                            </a>
+                            <a href="https://dashboard-analytics-demo.com" target="_blank" class="text-purple-400 hover:text-purple-300">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#skills" class="btn-hover inline-flex items-center bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-lg transition duration-300">
+                    <i class="fas fa-arrow-down mr-2"></i> Ver Habilidades
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-100 mb-4">Habilidades</h2>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
+                Minhas habilidades técnicas e conhecimentos que me permitem criar soluções de software eficientes.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Technical Skills -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-100 mb-6">Técnicas</h3>
+                    <div class="space-y-6">
+                        <!-- Skill 1 -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Python</span>
+                                <span class="text-gray-400">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-600 h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill 2 -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">C#</span>
+                                <span class="text-gray-400">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-600 h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill 3 -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">PHP</span>
+                                <span class="text-gray-400">75%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-600 h-2.5 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Skill 4 -->
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">SQL</span>
+                                <span class="text-gray-400">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="skill-bar bg-blue-600 h-2.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Skills -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-100 mb-6">Outras Habilidades</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center bg-gray-700 p-3 rounded-lg">
+                            <i class="fab fa-html5 text-orange-400 text-2xl mr-3"></i>
+                            <span class="text-gray-300">HTML5</span>
+                        </div>
+                        <div class="flex items-center bg-gray-700 p-3 rounded-lg">
+                            <i class="fab fa-css3-alt text-blue-400 text-2xl mr-3"></i>
+                            <span class="text-gray-300">CSS3</span>
+                        </div>
+                        <div class="flex items-center bg-gray-700 p-3 rounded-lg">
+                            <i class="fab fa-js-square text-yellow-400 text-2xl mr-3"></i>
+                            <span class="text-gray-300">JavaScript</span>
+                        </div>
+                        <div class="flex items-center bg-gray-700 p-3 rounded-lg">
+                            <i class="fab fa-git-alt text-red-400 text-2xl mr-3"></i>
+                            <span class="text-gray-300">Git</span>
+                        </div>
+                        <div class="flex items-center bg-gray-700 p-3 rounded-lg">
+                            <i class="fas fa-database text-blue-300 text-2xl mr-3"></i>
+                            <span class="text-gray-300">Tasy</span>
+                        </div>
+                        <div class="flex items-center bg-gray-700 p-3 rounded-lg">
+                            <i class="fas fa-tasks text-green-400 text-2xl mr-3"></i>
+                            <span class="text-gray-300">Eng. Requisitos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#sql" class="btn-hover inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition duration-300">
+                    <i class="fas fa-database mr-2"></i> Ver Exemplos SQL
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SQL Examples Section -->
+    <section id="sql" class="section py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-100 mb-4">Consultas SQL</h2>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
+                Exemplos de consultas SQL que demonstram minha habilidade em manipulação e análise de dados.
+            </p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Tasy Queries -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-100 mb-4 flex items-center">
+                        <i class="fas fa-database text-blue-400 mr-2"></i> Consultas em Tasy
+                    </h3>
+                    <div class="bg-gray-800 rounded-lg overflow-hidden">
+                        <pre class="language-sql"><code class="language-sql">-- APS - Atendimento por Tipo de Evolução 
+select DT_EVOLUCAO Data_Evolucao,
+obter_nome_pf(CD_PESSOA_FISICA) 
+Paciente,    
+SUBSTR(obter_nome_pessoa_fisica(cd_medico,''),1,60) Profissional,
+SUBSTR(obter_valor_dominio(72, ie_tipo_evolucao),1,60) ds_evolucao,
+obter_nome_estabelecimento(obter_estab_atend(NR_ATENDIMENTO))Estabelecimento,        
+substr(obter_desc_tipo_evolucao(ie_evolucao_clinica),1,80) Tipo_de_Evolucao
+from 
+EVOLUCAO_PACIENTE--
+where ((ie_evolucao_clinica  =:ie_tipo_evolucao) or ('0' =  :ie_tipo_evolucao))--
+and dt_evolucao between inicio_dia(:dt_inicial) and fim_dia(:dt_final) --and  ((cd_medico     = :cd_medico) or ('0' = :cd_medico))--
+and (obter_estab_atend(nr_atendimento) = :estabelecimento or (:estabelecimento = '0'))</code></pre>
+                    </div>
+                </div>
+                
+                <!-- Optimizations -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-100 mb-4 flex items-center">
+                        <i class="fas fa-tachometer-alt text-green-400 mr-2"></i> Otimizações
+                    </h3>
+                    <div class="bg-gray-800 rounded-lg overflow-hidden">
+                        <pre class="language-sql"><code class="language-sql">-- Relatório Operacional Territorial Analítico 
+select substr(sus_obter_dados_equipe(b.NR_SEQ_SUS_EQUIPE,'NM'),1,100)equipe,
+obter_cpf_pessoa_fisica(a.CD_PESSOA_FIS_RESPON)cpf_resp,
+obter_cns(a.CD_PESSOA_FIS_RESPON)cns_resp,
+a.CD_PESSOA_FIS_RESPON cod_pessoa,
+obter_nome_pf(a.CD_PESSOA_FIS_RESPON)pessoa_resp,
+to_char(obter_data_nascto_pf(a.CD_PESSOA_FIS_RESPON),'dd/mm/yyyy')nasc_resp,
+obter_sexo_pf(a.CD_PESSOA_FIS_RESPON,'C')sexo_resp,
+
+obter_cpf_pessoa_fisica(b.CD_PESSOA_FISICA)cpf_dep,
+obter_cns(b.cd_pessoa_fisica)cns,
+obter_nome_pf(b.CD_PESSOA_FISICA)pessoa_dep,
+c.ds_logradouro casa,
+to_char(obter_data_nascto_pf(b.CD_PESSOA_FISICA),'dd/mm/yyyy')nasc_dep,
+obter_sexo_pf(b.CD_PESSOA_FISICA,'C')sexo_dep,
+substr(obter_desc_micro_area(b.NR_SEQ_MICRO_AREA),1,255) microarea,
+obter_nome_estabelecimento(b.cd_estabelecimento)estabelecimento
+
+from ESUS_CAD_DOM_FAMILIA a,
+ESUS_CAD_INDIVIDUAL b,
+ESUS_CAD_DOMICILIAR c
+
+where  a.cd_pessoa_fis_respon = b.CD_PESSOA_RESPONSAVEL
+and a.nr_seq_cad_dom = c.nr_sequencia
+and c.dt_liberacao is not null
+and b.dt_liberacao is not null
+and b.dt_liberacao BETWEEN inicio_dia(:dt_inicial) and fim_dia(:dt_final)
+and (b.CD_PROFISSIONAL = :CD_PROFISSIONAL or (:CD_PROFISSIONAL = '0'))
+and ((b.cd_estabelecimento = :cd_estab) OR (:cd_estab = '0'))
+and ((b.NR_SEQ_SUS_EQUIPE = :nr_equipe) or (:nr_equipe = '0'))
+
+and c.nr_sequencia = (
+select max (x.nr_sequencia)
+from ESUS_CAD_DOMICILIAR x
+where x.cd_cep = c.cd_cep
+and x.NR_LOGRADOURO = c.nr_logradouro
+and c.dt_liberacao is not null
+)
+order by casa, pessoa_resp</code></pre>
+                    </div>
+                </div>
+                
+                <!-- Reports -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-100 mb-4 flex items-center">
+                        <i class="fas fa-chart-pie text-purple-400 mr-2"></i> Relatórios
+                    </h3>
+                    <div class="bg-gray-800 rounded-lg overflow-hidden">
+                        <pre class="language-sql"><code class="language-sql">-- Relatório de procedimentos por especialidade
+SELECT 
+    e.ds_especialidade,
+    COUNT(p.cd_procedimento) AS total_procedimentos,
+    SUM(p.vl_procedimento) AS valor_total,
+    AVG(p.vl_procedimento) AS valor_medio
+FROM 
+    procedimento p
+JOIN 
+    especialidade e ON p.cd_especialidade = e.cd_especialidade
+WHERE 
+    p.dt_procedimento BETWEEN '2023-01-01' AND '2023-12-31'
+GROUP BY 
+    e.ds_especialidade
+HAVING 
+    COUNT(p.cd_procedimento) > 10
+ORDER BY 
+    valor_total DESC;</code></pre>
+                    </div>
+                </div>
+                
+                <!-- Complex Queries -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-100 mb-4 flex items-center">
+                        <i class="fas fa-brain text-yellow-400 mr-2"></i> Consultas Complexas
+                    </h3>
+                    <div class="bg-gray-800 rounded-lg overflow-hidden">
+                        <pre class="language-sql"><code class="language-sql">-- Inserção de Diu
+SELECT PPD.DT_REGISTRO REGISTRO,
+OBTER_NOME_PF(PPD.CD_PESSOA_FISICA)PACIENTE,
+FLOOR((TO_CHAR(SYSDATE, 'YYYYMMDD') - TO_CHAR(OBTER_DATA_NASCTO_PF(PPD.CD_PESSOA_FISICA), 'YYYYMMDD')) / 10000) AS IDADE,
+HSM.QT_GESTACOES GESTAÇÕES,
+OBTER_NOME_ESTABELECIMENTO(OBTER_ESTAB_ATEND(PPD.NR_ATENDIMENTO))ESTABELECIMENTO,
+OBTER_NOME_PF(PPD.CD_PROFISSIONAL) PROFISSIONAL,
+HSM.DS_OBSERVACAO OBSERVACAO
+
+
+
+
+FROM PROC_PAC_DESCRICAO PPD,
+HISTORICO_SAUDE_MULHER HSM
+
+WHERE PPD.CD_PESSOA_FISICA = HSM.CD_PESSOA_FISICA
+AND PPD.NR_SEQ_PROC_INTERNO = '38612'
+AND ((obter_estab_atendimento(PPD.nr_atendimento) = :cd_estab) or (:cd_estab = '0'))
+AND PPD.DT_REGISTRO between inicio_dia(:dt_inicial) and fim_dia(:dt_final)
+AND ((PPD.CD_PROFISSIONAL = :CD_PROFISSIONAL) OR (:CD_PROFISSIONAL = '0'))
+AND :IE_SINTETICO='N'
+
+ORDER BY PPD.NR_ATENDIMENTO ASC</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#contact" class="btn-hover inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition duration-300">
+                    <i class="fas fa-envelope mr-2"></i> Entre em Contato
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-100 mb-4">Contato</h2>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
+                Entre em contato comigo para oportunidades de trabalho, projetos ou dúvidas.
+            </p>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Contact Form -->
+                <div class="lg:w-1/2">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-300 mb-2">Nome</label>
+                            <input type="text" id="name" class="form-input w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Seu nome" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" class="form-input w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="seu@email.com" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-300 mb-2">Mensagem</label>
+                            <textarea id="message" rows="5" class="form-input w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Sua mensagem..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-hover w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg transition duration-300">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-700 p-8 rounded-xl h-full">
+                        <h3 class="text-xl font-semibold text-gray-100 mb-6">Informações de Contato</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-900 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-100">Email</h4>
+                                    <a href="mailto:seu@email.com" class="text-blue-400 hover:text-blue-300">dev.panzarini@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-green-900 p-3 rounded-full mr-4">
+                                    <i class="fab fa-whatsapp text-green-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-100">WhatsApp</h4>
+                                    <a href="https://wa.me/42999574674" target="_blank" class="text-blue-400 hover:text-blue-300">+55 42 9 9957-4674</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-700 p-3 rounded-full mr-4">
+                                    <i class="fab fa-linkedin-in text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-100">LinkedIn</h4>
+                                    <a href="https://www.linkedin.com/in/ryan-panzarini-137521265/" target="_blank" class="text-blue-400 hover:text-blue-300">Acesse meu Linkedln</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-gray-800 p-3 rounded-full mr-4">
+                                    <i class="fab fa-github text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-100">GitHub</h4>
+                                    <a href="https://github.com/RyanPanzarini" target="_blank" class="text-blue-400 hover:text-blue-300">Acesse meu GitHub</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <h4 class="font-medium text-gray-100 mb-4">Disponibilidade para trabalho</h4>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                                <span class="text-gray-300">Disponível para novas oportunidades</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-2xl font-bold text-gray-100">Ryan Panzarini</h3>
+                    <p>Engenheiro de Software</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://github.com/RyanPanzarini" target="_blank" class="social-icon hover:text-white transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ryan-panzarini-137521265/" target="_blank" class="social-icon hover:text-white transition">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    </a>
+                    <a href="https://www.instagram.com/ryanpanzarini/" target="_blank" class="social-icon hover:text-white transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-6 pt-6 text-center">
+                <p>&copy; 2025 Ryan Panzarini. Todos os direitos reservados.</p>
+                <div class="mt-4">
+                    <a href="#home" class="text-blue-400 hover:text-blue-300 inline-flex items-center">
+                        <i class="fas fa-arrow-up mr-2"></i> Voltar ao topo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-sql.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Animate skill bars when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-bar');
+                    skillBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    });
+                }
+            });
+        }, {threshold: 0.1});
+
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+
+        // Button hover and active effects
+        document.querySelectorAll('.btn-hover').forEach(button => {
+            button.addEventListener('mousedown', function() {
+                this.classList.add('btn-active');
+            });
+            
+            button.addEventListener('mouseup', function() {
+                this.classList.remove('btn-active');
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.classList.remove('btn-active');
+            });
+        });
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the form data to a server
+            // For this example, we'll just show an alert
+            alert(`Obrigado pela mensagem, ${name}! Entrarei em contato em breve.`);
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
